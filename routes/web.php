@@ -14,12 +14,14 @@ use App\Http\Controllers\ProductController;
 
 
 Route::get('/',[ShopgridController::class,'index'])->name('home');
-Route::get('/product-category',[ShopgridController::class,'category'])->name('product-category');
-Route::get('/product-detail',[ShopgridController::class,'product'])->name('product-detail');
+Route::get('/product-category/{id}',[ShopgridController::class,'category'])->name('product-category');
+Route::get('/product-detail/{id}',[ShopgridController::class,'product'])->name('product-detail');
 Route::get('/cart/show',[CartController::class,'index'])->name('cart.show');
 Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
 Route::get('/customer/login',[CustomerAuthController::class,'login'])->name('customer.login');
 Route::get('/customer/register',[CustomerAuthController::class,'register'])->name('customer.register');
+
+
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
 
@@ -55,5 +57,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/product/manage', [ProductController::class, 'index'])->name('product.index');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::get('/product/detail/{id}', [ProductController::class, 'detail'])->name('product.detail');
+    Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::get('/product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
 
 });

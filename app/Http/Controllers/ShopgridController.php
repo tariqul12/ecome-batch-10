@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ShopgridController extends Controller
@@ -11,13 +13,18 @@ class ShopgridController extends Controller
         return view('front-end.home.home');
     }
 
-    public function category()
+    public function category($id)
     {
-        return view('front-end.category.index');
+        return view('front-end.category.index', [
+            'products'=> Product::where('category_id', $id)->get(),
+            'categories' => Category::all()
+        ]);
     }
 
-    public function product()
+    public function product($id)
     {
-        return view('front-end.product.index');
+        return view('front-end.product.index', [
+            'product' => Product::find($id)
+        ]);
     }
 }
