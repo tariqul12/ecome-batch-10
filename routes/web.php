@@ -16,7 +16,10 @@ use App\Http\Controllers\ProductController;
 Route::get('/',[ShopgridController::class,'index'])->name('home');
 Route::get('/product-category/{id}',[ShopgridController::class,'category'])->name('product-category');
 Route::get('/product-detail/{id}',[ShopgridController::class,'product'])->name('product-detail');
+
+Route::post('/cart/add',[CartController::class,'addCart'])->name('cart.add');
 Route::get('/cart/show',[CartController::class,'index'])->name('cart.show');
+
 Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
 Route::get('/customer/login',[CustomerAuthController::class,'login'])->name('customer.login');
 Route::get('/customer/register',[CustomerAuthController::class,'register'])->name('customer.register');

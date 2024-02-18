@@ -28,7 +28,12 @@
 
     <section class="item-details section">
         <div class="container">
+
             <div class="top-area">
+
+                <form action="{{route('cart.add')}}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{$product->id}}" name="id">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-images">
@@ -51,56 +56,21 @@
                                     cameras</a></p>
                             <h3 class="price">{{$product->regular_price}}<span>{{$product->selling_price}}</span></h3>
                             <p class="info-text">{{$product->short_description}}</p>
+
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="form-group color-option">
-                                        <label class="title-label" for="size">Choose color</label>
-                                        <div class="single-checkbox checkbox-style-1">
-                                            <input type="checkbox" id="checkbox-1" checked>
-                                            <label for="checkbox-1"><span></span></label>
-                                        </div>
-                                        <div class="single-checkbox checkbox-style-2">
-                                            <input type="checkbox" id="checkbox-2">
-                                            <label for="checkbox-2"><span></span></label>
-                                        </div>
-                                        <div class="single-checkbox checkbox-style-3">
-                                            <input type="checkbox" id="checkbox-3">
-                                            <label for="checkbox-3"><span></span></label>
-                                        </div>
-                                        <div class="single-checkbox checkbox-style-4">
-                                            <input type="checkbox" id="checkbox-4">
-                                            <label for="checkbox-4"><span></span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="color">Battery capacity</label>
-                                        <select class="form-control" id="color">
-                                            <option>5100 mAh</option>
-                                            <option>6200 mAh</option>
-                                            <option>8000 mAh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12">
+                                <div class="col-lg-12 col-md-4 col-12">
                                     <div class="form-group quantity">
                                         <label for="color">Quantity</label>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
+                                        <input type="number" name="qty" class="form-control" value="1" min="1">
                                     </div>
                                 </div>
                             </div>
+
                             <div class="bottom-content">
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="button cart-button">
-                                            <a href="{{route('cart.show')}}" class="btn pt-2" style="width: 100%;">Add to Cart</a>
+                                            <button type="submit" class="btn" style="width: 100%;">Add to Cart</button>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12">
@@ -118,7 +88,10 @@
                         </div>
                     </div>
                 </div>
+                </form>
+
             </div>
+
             <div class="product-details-info">
                 <div class="single-block">
                     <div class="row">
