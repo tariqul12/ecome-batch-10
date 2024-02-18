@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 
 class ShopgridController extends Controller
 {
+    private $products;
     public function index()
     {
-        return view('front-end.home.home');
+        $this->products = Product::where('status', 1)->orderBy('id', 'desc')->take(8)->get();
+        return view('front-end.home.home', [
+            'products' => $this->products
+        ]);
     }
 
     public function category($id)

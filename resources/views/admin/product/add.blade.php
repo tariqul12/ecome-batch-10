@@ -28,7 +28,7 @@
                         <div class="row mb-4">
                             <label for="firstName" class="col-md-3 form-label">Category Name</label>
                             <div class="col-md-9">
-                                <select class="form-control" name="category_id">
+                                <select class="form-control" name="category_id" onchange="getSubCategory(this.value)">
                                     <option value=""> -- Select Category Name -- </option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -39,7 +39,7 @@
                         <div class="row mb-4">
                             <label for="firstName" class="col-md-3 form-label">Sub Category Name</label>
                             <div class="col-md-9">
-                                <select class="form-control" name="sub_category_id">
+                                <select class="form-control" name="sub_category_id" id="subCategoryId">
                                     <option value=""> -- Select Sub Category Name -- </option>
                                     @foreach($subCategories as $subCategory)
                                         <option value="{{$subCategory->id}}">{{$subCategory->name}}</option>

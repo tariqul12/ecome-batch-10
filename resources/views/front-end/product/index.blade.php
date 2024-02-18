@@ -49,7 +49,7 @@
                             <h2 class="title">{{$product->name}}</h2>
                             <p class="category"><i class="lni lni-tag"></i> {{$product->category->name}}:<a href="javascript:void(0)">{{$product->subCategory->name}}
                                     cameras</a></p>
-                            <h3 class="price">{{$product->reguler_price}}<span>{{$product->selling_price}}</span></h3>
+                            <h3 class="price">{{$product->regular_price}}<span>{{$product->selling_price}}</span></h3>
                             <p class="info-text">{{$product->short_description}}</p>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-12">

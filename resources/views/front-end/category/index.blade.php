@@ -185,7 +185,7 @@
                                             <div class="product-image">
                                                 <img src="{{asset($product->image)}}" alt="#" height="200px" width="200px">
                                                 <div class="button">
-                                                    <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                                    <a href="{{route('cart.show')}}" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
                                                 </div>
                                             </div>
                                             <div class="product-info">
@@ -231,7 +231,7 @@
                                                     <div class="product-image">
                                                         <img src="{{ asset('/') }}front-end-assets/assets/images/products/product-1.jpg" alt="#">
                                                         <div class="button">
-                                                            <a href="" class="btn"><i class="lni lni-cart"></i> Add to
+                                                            <a href="{{route('cart.show')}}" class="btn"><i class="lni lni-cart"></i> Add to
                                                                 Cart</a>
                                                         </div>
                                                     </div>

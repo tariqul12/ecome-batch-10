@@ -30,6 +30,12 @@ class ProductController extends Controller
             'subCategories' => SubCategory::all()
         ]);
     }
+    private $subCategory;
+    public function getSubCategoryByCategory()
+    {
+        $this->subCategory = SubCategory::where('category_id', $_GET['category_id'])->get();
+        return response()->json($this->subCategory);
+    }
 
     public function store(Request $request)
     {

@@ -1468,5 +1468,24 @@
 </body>
 
 
-<!-- Mirrored from laravel8.spruko.com/noa/index by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 May 2023 13:08:40 GMT -->
+<script>
+    function getSubCategory(categoryId){
+        $.ajax({
+            type: "GET",
+            url: "{{route('get-sub-category-by-category-id')}}",
+            data: {category_id: categoryId},
+            DataType: "JSON",
+            success: function (response){
+                var option = '';
+                option += '<option value=""> -- Select Category Name -- </option>';
+                $.each(response,function (key, value){
+                    option += '<option value="'+value.id+'">' +value.name+'</option>';
+                });
+                $('#subCategoryId').empty();
+                $('#subCategoryId').append(option);
+            }
+        });
+    }
+</script>
+
 </html>
