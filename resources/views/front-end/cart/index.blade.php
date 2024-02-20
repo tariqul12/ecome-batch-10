@@ -28,7 +28,7 @@
     <div class="shopping-cart section">
         <div class="container">
             <div class="cart-list-head">
-
+                <p class="text-center text-success">{{session('message')}}</p>
                 <div class="cart-list-title">
                     <div class="row">
                         <div class="col-lg-1 col-md-1 col-12">
@@ -43,14 +43,14 @@
                             <p>Unit Price</p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <p>Sub Total</p>
+                            <p>Total</p>
                         </div>
                         <div class="col-lg-1 col-md-2 col-12">
                             <p>Remove</p>
                         </div>
                     </div>
                 </div>
-
+                @php($sum=0)
                 @foreach($cart_products as $cart_product)
                 <div class="cart-single-list">
                     <div class="row align-items-center">
@@ -65,21 +65,26 @@
                             </p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <input type="number" class="form-control" value="{{$cart_product->qty}}">
+                            <form action="{{route('cart.update', ['row_id' => $cart_product->rowId])}}" method="POST">
+                                @csrf
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="qty" value="{{$cart_product->qty}}"/>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </div>
+                            </form>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
                             <p>{{$cart_product->price}}</p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <p>{{$cart_product->subtotal}}</p>
+                            <p>{{round($cart_product->subtotal)}}</p>
                         </div>
                         <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
+                            <a class="remove-item" href="{{route('cart.delete', ['row_id' => $cart_product->rowId])}}" onclick="return confirm('Are you sure to delete this item..')"><i class="lni lni-close"></i></a>
                         </div>
                     </div>
                 </div>
+                    @php($sum = $sum + $cart_product->subtotal)
                 @endforeach
 
             </div>
@@ -103,10 +108,10 @@
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="right">
                                     <ul>
-                                        <li>Cart Subtotal<span>$2560.00</span></li>
-                                        <li>Shipping<span>Free</span></li>
-                                        <li>You Save<span>$29.00</span></li>
-                                        <li class="last">You Pay<span>$2531.00</span></li>
+                                        <li>Cart Subtotal<span>{{$sum}}</span></li>
+                                        <li>Tax Total<span>{{$tax = round($sum*0.15)}}</span></li>
+                                        <li>Shipping Cost<span>{{$shipping = 100}}</span></li>
+                                        <li class="last">You Payable<span>{{ $sum + $tax + $shipping}}</span></li>
                                     </ul>
                                     <div class="button">
                                         <a href="{{route('checkout')}}" class="btn">Checkout</a>

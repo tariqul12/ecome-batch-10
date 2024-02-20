@@ -19,6 +19,8 @@ Route::get('/product-detail/{id}',[ShopgridController::class,'product'])->name('
 
 Route::post('/cart/add',[CartController::class,'addCart'])->name('cart.add');
 Route::get('/cart/show',[CartController::class,'index'])->name('cart.show');
+Route::post('/cart/update/{row_id}',[CartController::class,'update'])->name('cart.update');
+Route::get('/cart/delete/{row_id}',[CartController::class,'delete'])->name('cart.delete');
 
 Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout');
 Route::get('/customer/login',[CustomerAuthController::class,'login'])->name('customer.login');

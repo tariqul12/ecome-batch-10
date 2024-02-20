@@ -34,7 +34,7 @@
                 <form action="{{route('cart.add')}}" method="post">
                     @csrf
                     <input type="hidden" value="{{$product->id}}" name="id">
-                <div class="row align-items-center">
+                <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-images">
                             <main id="gallery">
@@ -49,7 +49,7 @@
                             </main>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-12">
+                    <div class="col-lg-6 col-md-12 col-12 ">
                         <div class="product-info">
                             <h2 class="title">{{$product->name}}</h2>
                             <p class="category"><i class="lni lni-tag"></i> {{$product->category->name}}:<a href="javascript:void(0)">{{$product->subCategory->name}}

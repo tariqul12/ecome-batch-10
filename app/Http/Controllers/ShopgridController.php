@@ -31,4 +31,6 @@ class ShopgridController extends Controller
             'product' => Product::find($id)
         ]);
     }
+
+
 }
